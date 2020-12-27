@@ -3,13 +3,13 @@ import 'firebase/firestore'
 import 'firebase/auth'
 
 var config = {
-  apiKey: "AIzaSyDqoR7bF0QBRRbepPXZ5EE-KIgY5CFqs-M",
-  authDomain: "marioplan-fb835.firebaseapp.com",
-  projectId: "marioplan-fb835",
-  storageBucket: "marioplan-fb835.appspot.com",
-  messagingSenderId: "406505268345",
-  appId: "1:406505268345:web:3a0cf00c5a55a3c6ac20a8",
-  measurementId: "G-11F1W7Y63P"
+  apiKey: "AIzaSyBjd5847SFrphMYdDtXhCEef0UcziVVe0w",
+    authDomain: "marioplan-403af.firebaseapp.com",
+    projectId: "marioplan-403af",
+    storageBucket: "marioplan-403af.appspot.com",
+    messagingSenderId: "120177323085",
+    appId: "1:120177323085:web:5ddaec57eceed524610004",
+    measurementId: "G-JQFXXJB15Y"
 };
 // Initialize Firebase
 firebase.initializeApp(config);

@@ -29,3 +29,33 @@ textarea.materialize-textarea:focus:not([readonly]){
   border-color: #ec407a;
   box-shadow: none;
 }
+
+button:hover {
+  background-color: rgba(0, 0, 0, 0.116);
+}
+
+/* button:focus:not(:focus-visible) {
+  background-color: Transparent;
+  background-repeat: repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline:none;
+  color: white;
+  height: 64px;
+} */
+
+
+
+button {
+  background-color: Transparent;
+  background-repeat:repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline:none;
+  color: white;
+  height: 64px;
+}
+
+

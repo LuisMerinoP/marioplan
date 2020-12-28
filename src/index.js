@@ -10,7 +10,7 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import { createFirestoreInstance, reduxFirestore, getFirestore } from 'redux-firestore';
 import { ReactReduxFirebaseProvider, getFirebase } from 'react-redux-firebase';
-import firebase from 'firebase/app'
+import firebase from './config/fbConfig'
 import fbConfig from './config/fbConfig'
 
 const store = createStore(rootReducer,
@@ -28,10 +28,17 @@ const rrfProps = {
   createFirestoreInstance
 };
 
-ReactDOM.render(
-<Provider store={store}>
-  <ReactReduxFirebaseProvider {...rrfProps}>
-    <App />
-  </ReactReduxFirebaseProvider>
-</Provider>, 
-document.getElementById('root'));
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    ReactDOM.render(
+      <Provider store={store}>
+        <ReactReduxFirebaseProvider {...rrfProps}>
+          <App />
+        </ReactReduxFirebaseProvider>
+      </Provider>, 
+      document.getElementById('root'));
+  } else {
+    // No user is signed in.
+  }
+});
+

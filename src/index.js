@@ -1,4 +1,3 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -10,8 +9,17 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import { createFirestoreInstance, reduxFirestore, getFirestore } from 'redux-firestore';
 import { ReactReduxFirebaseProvider, getFirebase } from 'react-redux-firebase';
-import firebase from './config/fbConfig'
-import fbConfig from './config/fbConfig'
+// firebase packages
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/database';
+import 'firebase/firestore'; // for firestore
+import { fbConfig, reduxFirebase as rfConfig} from './config/fbConfig';
+
+// Initialize Firebase
+firebase.initializeApp(fbConfig);
+//firebase.analytics();
+firebase.firestore().settings({ timestampsInSnapshots: true });
 
 const store = createStore(rootReducer,
   compose(
@@ -23,22 +31,19 @@ const store = createStore(rootReducer,
 
 const rrfProps = {
   firebase,
-  config: fbConfig,
+  config: rfConfig,
   dispatch: store.dispatch,
   createFirestoreInstance
-};
+}
 
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    ReactDOM.render(
-      <Provider store={store}>
-        <ReactReduxFirebaseProvider {...rrfProps}>
-          <App />
-        </ReactReduxFirebaseProvider>
-      </Provider>, 
-      document.getElementById('root'));
-  } else {
-    // No user is signed in.
+firebase.auth().onAuthStateChanged((user) => {
+  ReactDOM.render(
+    <Provider store={store}>
+      <ReactReduxFirebaseProvider {...rrfProps}>
+        <App />
+      </ReactReduxFirebaseProvider>
+    </Provider>, 
+    document.getElementById('root'));
   }
-});
+);
 

@@ -1,8 +1,8 @@
-import firebase from 'firebase/app'
-import 'firebase/firestore'
-import 'firebase/auth'
+// import firebase from 'firebase/app'
+// import 'firebase/firestore'
+// import 'firebase/auth'
 
-var config = {
+export const fbConfig = {
   apiKey: "AIzaSyBjd5847SFrphMYdDtXhCEef0UcziVVe0w",
     authDomain: "marioplan-403af.firebaseapp.com",
     projectId: "marioplan-403af",
@@ -11,9 +11,12 @@ var config = {
     appId: "1:120177323085:web:5ddaec57eceed524610004",
     measurementId: "G-JQFXXJB15Y"
 };
-// Initialize Firebase
-firebase.initializeApp(config);
-//firebase.analytics();
-firebase.firestore().settings({ timestampsInSnapshots: true });
 
-export default firebase;
+export const reduxFirebase = {
+  userProfile: 'users',
+  useFirestoreForProfile: true,
+  enableLogging: true
+}
+
+/* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
+export default { fbConfig, reduxFirebase };
